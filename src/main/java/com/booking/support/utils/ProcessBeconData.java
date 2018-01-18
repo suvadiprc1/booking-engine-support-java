@@ -63,7 +63,7 @@ public class ProcessBeconData {
             inputStream.close();
             final URL resource = getClass().getResource(PointOfInterestConstant.BECON_RESOURCE);
             FileOutputStream out =
-                new FileOutputStream(new File(resource.toURI()));
+                new FileOutputStream(resource.getFile());
             workBook.write(out);
             out.close();
 
