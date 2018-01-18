@@ -1,0 +1,16 @@
+target/
+build/
+.DS_Store
+.project
+.classpath
+.settings
+*.iml
+
+## Directory-based project format:
+.idea/
+.gradle/
+out/
+gradle/
+
+## Files to be ignore:
+gradlew*
