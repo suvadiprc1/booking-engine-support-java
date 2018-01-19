@@ -5,6 +5,7 @@ import com.booking.support.dtos.DeviceInformation;
 import com.booking.support.dtos.GetBeconRequest;
 import com.booking.support.dtos.Location;
 import com.booking.support.dtos.PointOfInterest;
+import com.booking.support.dtos.RegistrationInformation;
 import com.booking.support.exceptions.BeconAdditionException;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.ss.usermodel.Cell;
@@ -74,9 +75,10 @@ public class ProcessBeconData {
         return true;
     }
 
-    public boolean findBecon(final GetBeconRequest getBeconRequest) {
+    public RegistrationInformation findBecon(final GetBeconRequest getBeconRequest) {
         boolean isBeaconPresent = false;
         final XSSFSheet workBookSheet;
+        AssetInfo assetInfo = null;
         try {
             workBookSheet = getWorkBookSheet(PointOfInterestConstant.BECON_RESOURCE);
 
@@ -86,15 +88,24 @@ public class ProcessBeconData {
                 final String uuid = row.getCell(0) == null ? null : row.getCell(0).getStringCellValue();
                 final String region = row.getCell(1) == null ? null : row.getCell(1).getStringCellValue();
                 final String assetId = row.getCell(2) == null ? null : row.getCell(2).getStringCellValue();
+                final String message = row.getCell(3) == null ? null : row.getCell(3).getStringCellValue();
                 if (StringUtils.isNotBlank(uuid) && StringUtils.isNotBlank(region) && StringUtils.isNotBlank(assetId) && StringUtils
                     .equalsIgnoreCase(getBeconRequest.getUuid(), uuid) && StringUtils
                     .equalsIgnoreCase(getBeconRequest.getRegion(), region) && StringUtils
                     .equalsIgnoreCase(getBeconRequest.getAssetId(), assetId)) {
                     isBeaconPresent = true;
+                    assetInfo = new AssetInfo();
+                    assetInfo.setAssetId(assetId);
+                    assetInfo.setMessage(message);
+                    assetInfo.setRegion(region);
+                    assetInfo.setUuid(uuid);
                     break;
                 }
             }
-            return isBeaconPresent;
+            final RegistrationInformation registrationInformation = new RegistrationInformation();
+            registrationInformation.setRegistertered(isBeaconPresent);
+            registrationInformation.setAssetInfo(assetInfo);
+            return registrationInformation;
         } catch (Exception e) {
             e.printStackTrace();
             throw new BeconAdditionException("Becon search failed!", e);
