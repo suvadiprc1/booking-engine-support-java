@@ -13,13 +13,13 @@ import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.springframework.util.FileCopyUtils;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -28,7 +28,7 @@ import java.util.Map;
 
 public class ProcessBeconData {
 
-    public boolean addBecon(final DeviceInformation deviceInformation, final String projectDir) {
+    public boolean addBecon(final DeviceInformation deviceInformation) {
         final Map<Location, List<PointOfInterest>> pointOfInterestMap = new HashMap<Location, List<PointOfInterest>>();
         List<PointOfInterest> pointOfInterests = new ArrayList<PointOfInterest>();
 
@@ -61,8 +61,9 @@ public class ProcessBeconData {
             }
 
             inputStream.close();
+            final URL resource = getClass().getResource(PointOfInterestConstant.BECON_RESOURCE);
             FileOutputStream out =
-                new FileOutputStream(new File(projectDir + "\\src\\main\\resources\\poidata\\becon-data" + "" + ".xlsx"));
+                new FileOutputStream(resource.getFile());
             workBook.write(out);
             out.close();
 
