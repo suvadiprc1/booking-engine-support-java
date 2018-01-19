@@ -19,7 +19,6 @@ public class BeconService {
     public RegistrationInformation isBeconPresent(final GetBeconRequest getBeconRequest) {
         final ProcessBeconData processBeconData = new ProcessBeconData();
         final RegistrationInformation registrationInformation = new RegistrationInformation();
-        registrationInformation.setRegistertered(processBeconData.findBecon(getBeconRequest));
-        return registrationInformation;
+        return processBeconData.findBecon(getBeconRequest);
     }
 }

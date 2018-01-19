@@ -6,6 +6,7 @@ import java.io.Serializable;
 public class RegistrationInformation implements Serializable {
 
 	private boolean isRegistertered;
+	private AssetInfo assetInfo;
 
 	public boolean isRegistertered() {
 		return isRegistertered;
@@ -15,4 +16,11 @@ public class RegistrationInformation implements Serializable {
 		this.isRegistertered = isRegistertered;
 	}
 
+	public AssetInfo getAssetInfo() {
+		return assetInfo;
+	}
+
+	public void setAssetInfo(AssetInfo assetInfo) {
+		this.assetInfo = assetInfo;
+	}
 }
