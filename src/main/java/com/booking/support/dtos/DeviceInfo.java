@@ -3,7 +3,7 @@ package com.booking.support.dtos;
 import java.io.Serializable;
 
 @SuppressWarnings("serial")
-public class AssetInfo implements Serializable {
+public class DeviceInfo implements Serializable {
 
 	private String uuid;
 	private String region;

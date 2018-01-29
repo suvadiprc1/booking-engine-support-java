@@ -5,14 +5,14 @@ import java.util.List;
 
 @SuppressWarnings("serial")
 public class DeviceInformation implements Serializable {
-	private List<AssetInfo> devices;
+	private List<DeviceInfo> devices;
 	private String appName;
 
-	public List<AssetInfo> getDevices() {
+	public List<DeviceInfo> getDevices() {
 		return devices;
 	}
 
-	public void setDevices(List<AssetInfo> devices) {
+	public void setDevices(List<DeviceInfo> devices) {
 		this.devices = devices;
 	}
 

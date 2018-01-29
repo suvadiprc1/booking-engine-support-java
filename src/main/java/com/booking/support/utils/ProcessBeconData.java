@@ -1,6 +1,6 @@
 package com.booking.support.utils;
 
-import com.booking.support.dtos.AssetInfo;
+import com.booking.support.dtos.DeviceInfo;
 import com.booking.support.dtos.DeviceInformation;
 import com.booking.support.dtos.GetBeconRequest;
 import com.booking.support.dtos.Location;
@@ -15,7 +15,6 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -41,24 +40,24 @@ public class ProcessBeconData {
             final XSSFSheet sheet = workBook.getSheetAt(0);
 
             int lastRowNum = sheet.getLastRowNum() + 1;
-            final Iterator<AssetInfo> iterator = deviceInformation.getDevices().iterator();
+            final Iterator<DeviceInfo> iterator = deviceInformation.getDevices().iterator();
             while (iterator.hasNext()) {
-                final AssetInfo assetInfo = iterator.next();
+                final DeviceInfo deviceInfo = iterator.next();
                 final XSSFRow row = sheet.createRow(lastRowNum++);
                 final XSSFCell cell0 = row.createCell(0);
-                cell0.setCellValue(assetInfo.getUuid());
+                cell0.setCellValue(deviceInfo.getUuid());
                 final XSSFCell cell1 = row.createCell(1);
-                cell1.setCellValue(assetInfo.getRegion());
+                cell1.setCellValue(deviceInfo.getRegion());
                 final XSSFCell cell2 = row.createCell(2);
-                cell2.setCellValue(assetInfo.getAssetId());
+                cell2.setCellValue(deviceInfo.getAssetId());
                 final XSSFCell cell3 = row.createCell(3);
-                cell3.setCellValue(assetInfo.getMessage());
+                cell3.setCellValue(deviceInfo.getMessage());
                 final XSSFCell cell4 = row.createCell(4);
-                cell4.setCellValue(assetInfo.getLongitude());
+                cell4.setCellValue(deviceInfo.getLongitude());
                 final XSSFCell cell5 = row.createCell(5);
-                cell5.setCellValue(assetInfo.getLatitude());
+                cell5.setCellValue(deviceInfo.getLatitude());
                 final XSSFCell cell6 = row.createCell(6);
-                cell6.setCellValue(assetInfo.getLocationDetails());
+                cell6.setCellValue(deviceInfo.getLocationDetails());
             }
 
             inputStream.close();
@@ -78,7 +77,7 @@ public class ProcessBeconData {
     public RegistrationInformation findBecon(final GetBeconRequest getBeconRequest) {
         boolean isBeaconPresent = false;
         final XSSFSheet workBookSheet;
-        AssetInfo assetInfo = null;
+        DeviceInfo deviceInfo = null;
         try {
             workBookSheet = getWorkBookSheet(PointOfInterestConstant.BECON_RESOURCE);
 
@@ -94,17 +93,17 @@ public class ProcessBeconData {
                     .equalsIgnoreCase(getBeconRequest.getRegion(), region) && StringUtils
                     .equalsIgnoreCase(getBeconRequest.getAssetId(), assetId)) {
                     isBeaconPresent = true;
-                    assetInfo = new AssetInfo();
-                    assetInfo.setAssetId(assetId);
-                    assetInfo.setMessage(message);
-                    assetInfo.setRegion(region);
-                    assetInfo.setUuid(uuid);
+                    deviceInfo = new DeviceInfo();
+                    deviceInfo.setAssetId(assetId);
+                    deviceInfo.setMessage(message);
+                    deviceInfo.setRegion(region);
+                    deviceInfo.setUuid(uuid);
                     break;
                 }
             }
             final RegistrationInformation registrationInformation = new RegistrationInformation();
             registrationInformation.setRegistertered(isBeaconPresent);
-            registrationInformation.setAssetInfo(assetInfo);
+            registrationInformation.setDeviceInfo(deviceInfo);
             return registrationInformation;
         } catch (Exception e) {
             e.printStackTrace();
