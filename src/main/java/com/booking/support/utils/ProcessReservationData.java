@@ -107,10 +107,10 @@ public class ProcessReservationData {
                     final Double driveDistanceId = row.getCell(driveDistanceIndx).getNumericCellValue();
                     final DistanceDetails driveDistance = new DistanceDetails();
                     populateDriveDistance(driveDistanceId, driveDistance);
-                    reservation.setDriveDistanceDetails(driveDistance);
+                    reservation.setDriveDistance(driveDistance);
                     final PromotionalOffer offer = new PromotionalOffer();
                     populatePromotionalOffer(row.getCell(promotionalOfferIndx).getNumericCellValue(), offer);
-                    reservation.setPromotionalOffers(offer);
+                    reservation.setPromoOffers(offer);
                     reservationMap.put(reservationId, reservation);
                 }
 

@@ -11,8 +11,8 @@ public class Reservation {
     private String bookingPrice;
     private String specialInstructions;
     private String vehicleNo;
-    private DistanceDetails driveDistanceDetails;
-    private PromotionalOffer promotionalOffers;
+    private DistanceDetails driveDistance;
+    private PromotionalOffer promoOffers;
     public String getReservationId() {
         return reservationId;
     }
@@ -61,24 +61,12 @@ public class Reservation {
     public void setSpecialInstructions(String specialInstructions) {
         this.specialInstructions = specialInstructions;
     }
-    public PromotionalOffer getPromotionalOffers() {
-        return promotionalOffers;
-    }
-    public void setPromotionalOffers(PromotionalOffer promotionalOffers) {
-        this.promotionalOffers = promotionalOffers;
-    }
     public String getResourceDescription() {
         return resourceDescription;
     }
     public void setResourceDescription(String resourceDescription) {
         this.resourceDescription = resourceDescription;
     }
-	public DistanceDetails getDriveDistanceDetails() {
-		return driveDistanceDetails;
-	}
-	public void setDriveDistanceDetails(DistanceDetails driveDistanceDetails) {
-		this.driveDistanceDetails = driveDistanceDetails;
-	}
 
     public String getVehicleNo() {
         return vehicleNo;
@@ -86,5 +74,21 @@ public class Reservation {
 
     public void setVehicleNo(String vehicleNo) {
         this.vehicleNo = vehicleNo;
+    }
+
+    public DistanceDetails getDriveDistance() {
+        return driveDistance;
+    }
+
+    public void setDriveDistance(DistanceDetails driveDistance) {
+        this.driveDistance = driveDistance;
+    }
+
+    public PromotionalOffer getPromoOffers() {
+        return promoOffers;
+    }
+
+    public void setPromoOffers(PromotionalOffer promoOffers) {
+        this.promoOffers = promoOffers;
     }
 }

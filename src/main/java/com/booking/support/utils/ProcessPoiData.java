@@ -85,10 +85,10 @@ public class ProcessPoiData {
         final Double driveDistanceId = row.getCell(driveDistanceIndx).getNumericCellValue();
         final DistanceDetails driveDistance = new DistanceDetails();
         populateDriveDistance(driveDistanceId, driveDistance);
-        pointOfInterest.setDriveDistanceDetails(driveDistance);
+        pointOfInterest.setDriveDistance(driveDistance);
         final PromotionalOffer offer = new PromotionalOffer();
         populatePromotionalOffer(row.getCell(promotionalOfferIndx).getNumericCellValue(), offer);
-        pointOfInterest.setPromotionalOffers(offer);
+        pointOfInterest.setPromoOffers(offer);
         return pointOfInterest;
     }
 

@@ -3,8 +3,8 @@ package com.booking.support.dtos;
 public class PointOfInterest {
     private String name;
     private String specialInstructions;
-    private DistanceDetails driveDistanceDetails;
-    private PromotionalOffer promotionalOffers;
+    private DistanceDetails driveDistance;
+    private PromotionalOffer promoOffers;
 
     public String getName() {
         return name;
@@ -22,19 +22,19 @@ public class PointOfInterest {
         this.specialInstructions = specialInstructions;
     }
 
-    public DistanceDetails getDriveDistanceDetails() {
-        return driveDistanceDetails;
+    public DistanceDetails getDriveDistance() {
+        return driveDistance;
     }
 
-    public void setDriveDistanceDetails(DistanceDetails driveDistanceDetails) {
-        this.driveDistanceDetails = driveDistanceDetails;
+    public void setDriveDistance(DistanceDetails driveDistance) {
+        this.driveDistance = driveDistance;
     }
 
-    public PromotionalOffer getPromotionalOffers() {
-        return promotionalOffers;
+    public PromotionalOffer getPromoOffers() {
+        return promoOffers;
     }
 
-    public void setPromotionalOffers(PromotionalOffer promotionalOffers) {
-        this.promotionalOffers = promotionalOffers;
+    public void setPromoOffers(PromotionalOffer promoOffers) {
+        this.promoOffers = promoOffers;
     }
 }
