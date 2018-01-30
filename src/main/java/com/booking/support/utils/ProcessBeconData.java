@@ -88,6 +88,9 @@ public class ProcessBeconData {
                 final String region = row.getCell(1) == null ? null : row.getCell(1).getStringCellValue();
                 final String assetId = row.getCell(2) == null ? null : row.getCell(2).getStringCellValue();
                 final String message = row.getCell(3) == null ? null : row.getCell(3).getStringCellValue();
+                final String longitude = row.getCell(4) == null ? null : row.getCell(4).getStringCellValue();
+                final String latitude = row.getCell(5) == null ? null : row.getCell(5).getStringCellValue();
+                final String locationDetails = row.getCell(6) == null ? null : row.getCell(6).getStringCellValue();
                 if (StringUtils.isNotBlank(uuid) && StringUtils.isNotBlank(region) && StringUtils.isNotBlank(assetId) && StringUtils
                     .equalsIgnoreCase(getBeconRequest.getUuid(), uuid) && StringUtils
                     .equalsIgnoreCase(getBeconRequest.getRegion(), region) && StringUtils
@@ -98,6 +101,9 @@ public class ProcessBeconData {
                     deviceInfo.setMessage(message);
                     deviceInfo.setRegion(region);
                     deviceInfo.setUuid(uuid);
+                    deviceInfo.setLongitude(longitude);
+                    deviceInfo.setLatitude(latitude);
+                    deviceInfo.setLocationDetails(locationDetails);
                     break;
                 }
             }
