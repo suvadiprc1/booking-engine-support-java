@@ -6,6 +6,7 @@ public class DistanceDetails {
     private String driveDistance;
     private String landMarkInstructions;
     private String description;
+
     public Double getLatitude() {
         return latitude;
     }
@@ -45,4 +46,5 @@ public class DistanceDetails {
     public void setDescription(String description) {
         this.description = description;
     }
+
 }

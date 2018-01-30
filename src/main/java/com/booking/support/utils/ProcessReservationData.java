@@ -82,6 +82,7 @@ public class ProcessReservationData {
             final int companyWebsiteIndx = headerMap.get(ReservationConstant.COMPANY_WEBSITE);
             final int specialInstructionsIndx = headerMap.get(ReservationConstant.SPECIAL_INSTRUCTIONS);
             final int resourceDescriptionIndx = headerMap.get(ReservationConstant.RESOURCE_DESCRIPTION);
+            final int vehicleNoIndx = headerMap.get(ReservationConstant.VEHICLE_NO);
             // Get iterator to all the rows in current sheet
             Iterator<Row> rowIterator = sheet.iterator();
             // Traversing over each row of XLSX file
@@ -98,6 +99,7 @@ public class ProcessReservationData {
                     reservation.setStartDateTime(row.getCell(startTimeIndx).getNumericCellValue());
                     reservation.setEndDateTime(row.getCell(endTimeIndx).getNumericCellValue());
                     reservation.setResourceDescription(row.getCell(resourceDescriptionIndx).getStringCellValue());
+                    reservation.setVehicleNo(row.getCell(vehicleNoIndx).getStringCellValue());
                     final Double reservationIdValue = row.getCell(reservationIdIndx).getNumericCellValue();
                     final String reservationId = String.valueOf(reservationIdValue.intValue());
                     reservation.setReservationId(reservationId);
@@ -138,6 +140,7 @@ public class ProcessReservationData {
             final int driveDistanceIndx = headerMap.get(ReservationConstant.DRIVE_DISTANCE);
             final int landmarkInstructionsIndx = headerMap.get(ReservationConstant.LANDMARK_INSTRUCTIONS);
             final int descriptionIndx = headerMap.get(ReservationConstant.DESCR);
+
             // Get iterator to all the rows in current sheet
             Iterator<Row> rowIterator = sheet.iterator();
             // Traversing over each row of XLSX file

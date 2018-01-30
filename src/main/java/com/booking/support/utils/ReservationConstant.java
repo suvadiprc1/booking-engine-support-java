@@ -32,5 +32,5 @@ public class ReservationConstant {
     public static final String RESERVATION_DRIVE_RESOURCE = "/reservationdata/reservation-drive-data.xlsx";
     public static final String RESERVATION_PROMOTION_OFFER_RESOURCE = "/reservationdata/reservation-promotion-offer-data.xlsx";
     public static final String RESERVATION_PROMOTION_RULE_RESOURCE = "/reservationdata/reservation-promotion-rule-data.xlsx";
-
+    public static final String VEHICLE_NO = "vehicleNo";
 }

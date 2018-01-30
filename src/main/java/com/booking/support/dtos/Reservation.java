@@ -10,6 +10,7 @@ public class Reservation {
     private String resourceDescription;
     private String bookingPrice;
     private String specialInstructions;
+    private String vehicleNo;
     private DistanceDetails driveDistanceDetails;
     private PromotionalOffer promotionalOffers;
     public String getReservationId() {
@@ -78,4 +79,12 @@ public class Reservation {
 	public void setDriveDistanceDetails(DistanceDetails driveDistanceDetails) {
 		this.driveDistanceDetails = driveDistanceDetails;
 	}
+
+    public String getVehicleNo() {
+        return vehicleNo;
+    }
+
+    public void setVehicleNo(String vehicleNo) {
+        this.vehicleNo = vehicleNo;
+    }
 }
